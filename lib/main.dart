@@ -57,22 +57,34 @@ class MyHomePage extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20))),
                         child: Card(
-                          elevation: 3,
+                            elevation: 3,
                             key: Key(e.id),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                                  child: Text(
-                                    e.title,
-                                    style: const TextStyle(
-                                      fontSize: 20,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          e.title,
+                                          style: const TextStyle(
+                                            fontSize: 25,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        Text(
+                                          e.date.toString(),
+                                          style: const TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                      ],
+                                    )),
                                 Container(
                                   padding:
                                       const EdgeInsets.fromLTRB(30, 0, 30, 0),
