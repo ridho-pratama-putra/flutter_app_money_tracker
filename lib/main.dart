@@ -47,6 +47,18 @@ class MyHomePage extends StatelessWidget {
               child: MonthlySummary(amount: 20000),
             ),
             Column(
+              children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  child: const Text(
+                    "Sunday 11th July",
+                    style: TextStyle(fontSize: 30, color: Colors.grey),
+                  ),
+                )
+              ],
+            ),
+            Column(
               children: transaction
                   .map((e) => Container(
                         height: 100,
@@ -66,8 +78,10 @@ class MyHomePage extends StatelessWidget {
                                     padding:
                                         const EdgeInsets.fromLTRB(30, 0, 30, 0),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           e.title,
