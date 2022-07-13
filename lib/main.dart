@@ -84,16 +84,16 @@ class MyHomePage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          e.title,
+                                          e.title.toUpperCase(),
                                           style: const TextStyle(
-                                            fontSize: 25,
+                                            fontSize: 20,
                                             color: Colors.grey,
                                           ),
                                         ),
                                         Text(
                                           e.date.toString(),
                                           style: const TextStyle(
-                                            fontSize: 15,
+                                            fontSize: 10,
                                             color: Colors.grey,
                                           ),
                                         ),
