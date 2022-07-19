@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'models/transaction.dart';
 import 'utils/currency_format.dart';
@@ -26,8 +27,12 @@ class MyHomePage extends StatelessWidget {
   List<Transaction> transaction = <Transaction>[
     Transaction('id', 'makan', 20000, DateTime.now()),
     Transaction('if', 'pulsa', 21000, DateTime.now()),
-    Transaction('ik', 'minum', 21000, DateTime.now()),
     Transaction('ip', 'baterai jam', 21000, DateTime.now()),
+    Transaction('ik', 'minum', 21000, DateTime.now()),
+    Transaction('iq', 'Hp', 21000, DateTime.now()),
+    Transaction('iw', 'charger mac', 21000, DateTime.now()),
+    Transaction('ir', 'gojek', 21000, DateTime.now()),
+    Transaction('it', 'grab', 21000, DateTime.now()),
   ];
 
   MyHomePage({Key? key}) : super(key: key);
@@ -50,10 +55,10 @@ class MyHomePage extends StatelessWidget {
               children: [
                 Container(
                   alignment: Alignment.topLeft,
-                  padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                  padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
                   child: const Text(
-                    "Sunday 11th July",
-                    style: TextStyle(fontSize: 30, color: Colors.grey),
+                    "July",
+                    style: TextStyle(fontSize: 20, color: Colors.grey),
                   ),
                 )
               ],
@@ -61,51 +66,69 @@ class MyHomePage extends StatelessWidget {
             Column(
               children: transaction
                   .map((e) => Container(
-                        height: 100,
+                        height: 65,
                         width: double.infinity,
-                        padding: const EdgeInsets.fromLTRB(1, 1, 1, 1),
                         key: Key(e.id),
                         decoration: const BoxDecoration(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20))),
                         child: Card(
-                            elevation: 3,
+                            elevation: 2,
                             key: Key(e.id),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
                                     padding:
-                                        const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                                    child: Column(
+                                        const EdgeInsets.fromLTRB(15, 0, 0, 0),
+                                    child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          CrossAxisAlignment.center,
                                       children: [
-                                        Text(
-                                          e.title.toUpperCase(),
-                                          style: const TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.grey,
+                                        CircleAvatar(
+                                          child: Text(
+                                            DateFormat.d().format(e.date),
+                                            style: TextStyle(fontSize: 9),
                                           ),
+                                          maxRadius: 15,
                                         ),
-                                        Text(
-                                          e.date.toString(),
-                                          style: const TextStyle(
-                                            fontSize: 10,
-                                            color: Colors.grey,
+                                        Container(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              15, 0, 0, 0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                e.title.toUpperCase(),
+                                                style: const TextStyle(
+                                                  fontSize: 17,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                              Text(
+                                                DateFormat.jm().format(e.date),
+                                                style: const TextStyle(
+                                                  fontSize: 10,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        ),
+                                        )
                                       ],
                                     )),
                                 Container(
                                   padding:
-                                      const EdgeInsets.fromLTRB(30, 0, 30, 0),
+                                      const EdgeInsets.fromLTRB(0, 0, 15, 0),
                                   child: Text(
                                     CurrencyFormat.convertToIdr(e.amount, 0),
                                     style: const TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 15,
                                       color: Colors.grey,
                                     ),
                                   ),
