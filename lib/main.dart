@@ -46,56 +46,69 @@ class MyHomePage extends StatelessWidget {
 
   MyHomePage({Key? key}) : super(key: key);
 
+  _dismissKeyboard(BuildContext context) {
+    FocusScope.of(context).requestFocus(new FocusNode());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: const Key('scaffold'),
-      appBar: AppBar(
-        title: const Text('Money Tracker'),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              const Card(
-                elevation: 15,
-                child: MonthlySummary(amount: 20000),
-              ),
-              Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    const TextField(
-                        decoration: InputDecoration(label: Text('Title'))),
-                    const TextField(
-                        decoration: InputDecoration(label: Text('Amount'))),
-                    TextButton(
-                        onPressed: () => {},
-                        child: const Text(
-                          'Submit',
-                          style: TextStyle(color: Colors.deepPurpleAccent),
-                        ))
-                  ],
-                ),
-              ),
-              Container(
-                alignment: Alignment.topLeft,
-                padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-                child: const Text(
-                  "July",
-                  style: TextStyle(fontSize: 20, color: Colors.grey),
-                ),
-              ),
-              Column(
-                children:
-                    transaction.map((e) => TransactionWidget(e: e)).toList(),
-              )
-            ],
-          ),
+        key: const Key('scaffold'),
+        appBar: AppBar(
+          title: const Text('Money Tracker'),
         ),
-      ),
-    );
+        body: GestureDetector(
+          onTap: () {
+            _dismissKeyboard(context);
+          },
+          child: SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
+            child: Column(
+              children: <Widget>[
+                const Card(
+                  elevation: 15,
+                  child: MonthlySummary(amount: 20000),
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      ConstrainedBox(
+                          constraints: const BoxConstraints(
+                            maxHeight: 100,
+                          ),
+                          child: const TextField(
+                              maxLines: null,
+                              decoration:
+                                  InputDecoration(label: Text('Title')))),
+                      const TextField(
+                          decoration: InputDecoration(label: Text('Amount'))),
+                      TextButton(
+                          onPressed: () => {},
+                          child: const Text(
+                            'Submit',
+                            style: TextStyle(color: Colors.deepPurpleAccent),
+                          ))
+                    ],
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                  child: const Text(
+                    "July",
+                    style: TextStyle(fontSize: 20, color: Colors.grey),
+                  ),
+                ),
+                Column(
+                  children:
+                      transaction.map((e) => TransactionWidget(e: e)).toList(),
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }
 
