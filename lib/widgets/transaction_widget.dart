@@ -31,6 +31,8 @@ class TransactionWidget extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         maxRadius: 15,
+                        backgroundColor: Colors.black,
+                        foregroundColor: Colors.white,
                         child: Text(
                           DateFormat.d().format(e.date),
                           style: const TextStyle(fontSize: 9),
